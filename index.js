@@ -69,8 +69,12 @@ readFile(FILE_NAME, 'utf8')
   .then(R.map(R.pipe(
     R.prop('data'),
     cheerio.load,
-    $ => $('.page-content .post-content ul').first().find('li a').map(R.flip(cheerio)).get(),
-    R.map(e => ({ text: e.text(), link: e.attr('href')}))
+    $ => $('.page-content .post-content ul')
+      .first()
+      .find('li a')
+      .map(R.flip(cheerio))
+      .get(),
+    R.map(e => ({ text: e.text(), link: e.attr('href') }))
   )))
   .then(R.flatten)
   .then(R.map(R.pipe(
@@ -79,6 +83,6 @@ readFile(FILE_NAME, 'utf8')
   )))
   .then(e => Promise.all(e))
   .catch(e => console.warn(e))
-  .then(R.map(R.prop('data')))
+  .then(R.pluck('data'))
   .then(saveId)
 
