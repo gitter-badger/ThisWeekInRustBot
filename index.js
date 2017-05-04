@@ -1,11 +1,12 @@
+const { resolve } = require('path')
 const cheerio = require('cheerio')
 const axios = require('axios').default
 const R = require('ramda')
 const { readFile, writeFile } = require('pify')(require('fs'))
 
-const TOKEN = '301367699:AAGlkU9VF4Pp9ko1bLRsyZnWoz1EvWDNGpw'
+const TOKEN = process.env.TOKEN
 const URL_BASE = 'https://this-week-in-rust.org/'
-const FILE_NAME = './lastId.txt'
+const FILE_NAME = resolve(__dirname, 'lastId.txt')
 const TG_SEND = `https://api.telegram.org/bot${TOKEN}/sendMessage`
 const CHAT_ID = '@this_week_in_rust'
 
