@@ -126,3 +126,4 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/node,osx,windows,linux
+lastId.txt
