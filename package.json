@@ -1,0 +1,25 @@
+{
+  "name": "thisweekinrustbot",
+  "version": "0.1.0",
+  "description": "Bot for Telegram channel @this_week_in_rust",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atomixinteractions/ThisWeekInRustBot.git"
+  },
+  "keywords": [
+    "bot",
+    "telegram",
+    "rust",
+    "week"
+  ],
+  "author": "Sergey Sova <i.am@lestad.net> (https://lestad.top)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/atomixinteractions/ThisWeekInRustBot/issues"
+  },
+  "homepage": "https://github.com/atomixinteractions/ThisWeekInRustBot#readme"
+}
