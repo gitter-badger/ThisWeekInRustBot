@@ -12,7 +12,10 @@ const CHAT_ID = '@this_week_in_rust'
 
 let latestId = 0
 
-const saveId = () => writeFile(FILE_NAME, latestId)
+const saveId = () => (
+  writeFile(FILE_NAME, latestId),
+  console.log('saved latest id', latestId)
+)
 const message = R.curry(({ link, text }) => `${text}\n\n${link}`)
 const sendPost = R.curry((text) => axios.post(TG_SEND, { chat_id: CHAT_ID, text, parse_mode: 'HTML' }))
 // const sendPost = R.curry((text) => Promise.resolve({ data: text }))
@@ -64,6 +67,7 @@ readFile(FILE_NAME, 'utf8')
     ))
   ))
   .then(all => Promise.all(all))
+  .then(R.tap(list => (list || []).map(it => it.request.responseURL).forEach(e => console.log('fetched:', e))))
 
   // fetch links from each post
   .then(R.map(R.pipe(
